@@ -21,7 +21,7 @@ def flip_back(output_flipped, matched_parts):
 
     output_flipped = output_flipped[:, :, :, ::-1]
 
-    # 因为你输入的是翻转后的图像，所以输出的热图他们对应的左右关节也是相反的（训练的时候，输入的是翻转后的图像，target对应的左右关节也是对调过来的）。
+    # Since you inputted the flipped image, the corresponding left and right joints in the output heatmap are also reversed (during training, the input was the flipped image, and the left and right joints in the target were also swapped).
     for pair in matched_parts:
         tmp = output_flipped[:, pair[0], :, :].copy()
         output_flipped[:, pair[0], :, :] = output_flipped[:, pair[1], :, :]
@@ -120,3 +120,4 @@ def crop(img, center, scale, output_size, rot=0):
     )
 
     return dst_img
+
