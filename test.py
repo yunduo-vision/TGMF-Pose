@@ -8,11 +8,11 @@ from common.utils import *
 from common.h36m_dataset import Human36mDataset
 from common.load_data_hm36 import Fusion
 
-# 解析参数
+# Parse parameters
 args = parse_args()
 os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 
-# 导入模型
+# Import model
 exec('from model.' + args.model + ' import Model')
 
 def test(actions, dataloader, model):
@@ -47,7 +47,7 @@ def test(actions, dataloader, model):
 
 
 def main():
-    # 设置随机种子确保结果可复现
+    # Set random seeds to ensure reproducible results
     seed = 1126
     torch.manual_seed(seed)
     np.random.seed(seed)
@@ -85,3 +85,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
